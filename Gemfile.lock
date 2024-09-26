@@ -107,6 +107,8 @@ GEM
     error_highlight (0.6.0)
     erubi (1.13.0)
     execjs (2.9.1)
+    faker (3.4.2)
+      i18n (>= 1.8.11, < 2)
     ffi (1.17.0-aarch64-linux-gnu)
     ffi (1.17.0-arm64-darwin)
     ffi (1.17.0-x86_64-linux-gnu)
@@ -145,7 +147,6 @@ GEM
       date
       net-protocol
     net-pop (0.1.2)
-      net-protocol
     net-protocol (0.2.2)
       timeout
     net-smtp (0.5.0)
@@ -307,6 +308,7 @@ DEPENDENCIES
   capybara
   debug
   error_highlight (>= 0.4.0)
+  faker (~> 3.4)
   importmap-rails
   jbuilder
   puma (>= 5.0)
