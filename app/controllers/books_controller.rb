@@ -3,7 +3,7 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    @books = Book.all
+    @books = Book.where('title LIKE :query or content LIKE :query', query: "%#{params[:query]}%")
   end
 
   # GET /books/1 or /books/1.json

@@ -4,6 +4,14 @@
 
 <h1>Books</h1>
 
+<%= form_with method: :get do |f| %>
+  <div id="search-box">
+    <%= f.text_field :query, class: "form-control", placeholder: "Search for:" %>
+  </div>
+<% end %>
+
+<%= link_to "New book", new_book_path %>
+
 <div id="books">
   <% @books.each do |book| %>
     <%= render book %>
@@ -12,5 +20,3 @@
     </p>
   <% end %>
 </div>
-
-<%= link_to "New book", new_book_path %>
