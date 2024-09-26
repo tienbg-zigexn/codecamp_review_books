@@ -4,19 +4,34 @@
 
 <h1>Books</h1>
 
-<%= form_with method: :get do |f| %>
+<%= form_with remote: true, method: :get do |f| %>
   <div id="search-box">
     <%= f.text_field :query, class: "form-control", placeholder: "Search for:" %>
   </div>
 <% end %>
 
-<%= link_to "New book", new_book_path %>
+<br>
 
-<div id="books">
-  <% @books.each do |book| %>
-    <%= render book %>
-    <p>
-      <%= link_to "Show this book", book %>
-    </p>
-  <% end %>
-</div>
+<%= turbo_frame_tag "new_book" do %>
+  <div>
+    <%= link_to "New book", new_book_path %>
+  </div>
+<% end %>
+
+<br>
+
+<%= turbo_frame_tag "books_list" do %>
+  <div id="books">
+    <% @books.each do |book| %>
+      <%= turbo_frame_tag book do %>
+        <%= render book %>
+        <p>
+          <%= link_to "Details", book %>
+        </p>
+      <% end %>
+
+      <br>
+
+    <% end %>
+  </div>
+<% end %>

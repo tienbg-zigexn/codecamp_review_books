@@ -3,12 +3,12 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    @books = Book.search(params[:query])
+    @books = Book.search(params[:query]).reverse
   end
 
   # GET /books/1 or /books/1.json
   def show
-    @reviews = @book.reviews
+    @reviews = @book.reviews.reverse
   end
 
   # GET /books/new

@@ -1,34 +1,17 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @book %>
+<%= turbo_frame_tag @book do %>
+  <%= render @book %>
 
-<div>
-  <%= link_to "Edit this book", edit_book_path(@book) %> |
-  <%= link_to "Back to books", books_path %>
-
-  <%= button_to "Destroy this book", @book, method: :delete %>
-</div>
-
-<hr>
-
-<h2>Create reviews</h2>
-<%= form_tag book_reviews_path(@book), method: :post do %>
   <div>
-    <%= label_tag :rating, "Rating:" %>
-    <%= select_tag :rating, options_for_select((1..5).to_a, params[:rating]),
-      class: "form-control" %> </div>
-  <div>
-    <%= label_tag :content, "Content:" %>
-    <%= text_field_tag :content, params[:content], class: "form-control" %>
+    <%= link_to "Edit", edit_book_path(@book) %>
+    <%= link_to "Back", books_path %>
+    <%= button_to "Destroy", @book, method: :delete %>
   </div>
 
-  <%= submit_tag "Submit Review", class: "btn-primary" %>
-<% end %>
-
-<% @reviews.each do |review| %>
-<div>
-  <hr>
-  <p>rating: <%= review.rating %></p>
-  <p><%= review.content %></p>
-</div>
+  <div>
+    <p>Add review</p>
+    <%= render "review_form" %>
+    <%= render "reviews_list" %>
+  </div>
 <% end %>
