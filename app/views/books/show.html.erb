@@ -25,12 +25,10 @@
   <%= submit_tag "Submit Review", class: "btn-primary" %>
 <% end %>
 
-<% if @reviews.any? %>
-  <% @reviews.each do |review| %>
-  <div>
-    <hr>
-    <p>rating: <%= review.rating %></p>
-    <p><%= review.content %></p>
-  </div>
-  <% end %>
+<% @reviews.each do |review| %>
+<div>
+  <hr>
+  <p>rating: <%= review.rating %></p>
+  <p><%= review.content %></p>
+</div>
 <% end %>
